@@ -1,7 +1,7 @@
 :root {
   --theme: #6d8bff;
   --theme-dark: #4d66d0;
-  --bg: #f5f7ff;
+  --bg: #f7f8ff;
   --card: #ffffff;
   --text: #23314e;
   --muted: #6a7898;
@@ -14,20 +14,8 @@
 body {
   margin: 0;
   font-family: 'PingFang SC', 'Microsoft Yahei', sans-serif;
-  background: linear-gradient(160deg, var(--bg), #e8edff);
+  background: radial-gradient(circle at top right, #eef2ff, #f9fbff 50%);
   color: var(--text);
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: var(--card);
-  border-bottom: 3px solid var(--theme);
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 h1,
@@ -37,23 +25,79 @@ p {
   margin: 0;
 }
 
-.subtitle {
-  color: var(--muted);
-  margin-top: 0.35rem;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--card);
+  border-bottom: 2px solid #e2e8ff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+.subtitle,
+.hint {
+  color: var(--muted);
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.page-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1rem;
+}
+
+.page-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: #e7edff;
+  color: #3850a8;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-btn.active {
+  background: var(--theme);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(109, 139, 255, 0.4);
+}
+
+.pages {
+  padding: 0 1rem 1rem;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.22s ease;
 }
 
 .panel {
   background: var(--card);
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(73, 93, 163, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(73, 93, 163, 0.12);
   padding: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .row {
@@ -84,7 +128,7 @@ button {
 
 textarea {
   width: 100%;
-  min-height: 130px;
+  min-height: 120px;
   flex: 2;
 }
 
@@ -92,7 +136,7 @@ button {
   background: var(--theme);
   border: none;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: transform 0.12s ease, background 0.2s;
 }
@@ -122,7 +166,7 @@ button:hover {
 }
 
 .pet-face {
-  font-size: 2rem;
+  font-size: 1.9rem;
   text-align: center;
 }
 
@@ -148,21 +192,16 @@ button:hover {
   background: linear-gradient(90deg, #5ae1ca, var(--theme));
 }
 
-.stats {
-  margin-top: 0.8rem;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
+.stats,
 .ranking-tip {
   margin-top: 0.8rem;
+  font-size: 0.92rem;
   color: var(--muted);
-  font-size: 0.88rem;
 }
 
 .ranking-item {
   display: grid;
-  grid-template-columns: 50px 1fr auto;
+  grid-template-columns: 54px 1fr auto;
   gap: 0.7rem;
   align-items: center;
   border: 1px solid #dde4ff;
@@ -252,13 +291,9 @@ button:hover {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.8rem;
   }
 
-  .student-card {
-    grid-template-columns: 1fr;
-  }
-
+  .student-card,
   .ranking-item {
     grid-template-columns: 1fr;
   }

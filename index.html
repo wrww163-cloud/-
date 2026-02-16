@@ -10,33 +10,58 @@
     <header class="topbar">
       <div>
         <h1 id="systemTitle">班级宠物园</h1>
-        <p class="subtitle">把班级管理变成治愈养成游戏 ✨</p>
+        <p class="subtitle">可爱童趣 · 班级养成 · 分班档案</p>
       </div>
       <div class="class-switcher">
         <label for="classSelect">当前班级</label>
         <select id="classSelect"></select>
-        <button id="addClassBtn">+ 新建班级</button>
       </div>
     </header>
 
-    <main class="layout">
-      <section class="panel">
-        <h2>按班级管理学生与神兽</h2>
+    <nav class="page-nav">
+      <button class="page-btn active" data-page="classPage">📚 班级档案</button>
+      <button class="page-btn" data-page="feedPage">🍗 喂养中心</button>
+      <button class="page-btn" data-page="rankingPage">🏆 积分排名</button>
+      <button class="page-btn" data-page="settingsPage">⚙️ 系统设置</button>
+    </nav>
+
+    <main class="pages">
+      <section id="classPage" class="page active panel">
+        <h2>班级与学生档案管理</h2>
+        <div class="row">
+          <button id="addClassBtn">+ 新建班级</button>
+          <input id="singleClassName" placeholder="输入班级名后创建" />
+          <button id="addClassByInputBtn">创建班级</button>
+        </div>
+        <p class="hint">最多管理 20 个班级；每个班级最多 100 名学生。</p>
+
+        <h3>批量导入学生（当前班级）</h3>
         <div class="row">
           <textarea
             id="studentInput"
-            placeholder="批量导入：每行一个名字\n例如：\n王小明\n李小萌\n陈天天"
+            placeholder="每行一个学生名，例如：\n王小明\n李小萌\n陈天天"
           ></textarea>
           <div class="column gap-sm">
-            <button id="importBtn">批量导入名单</button>
-            <button id="randomAssignBtn">一键随机分配神兽</button>
-            <button id="selfAssignBtn">按学生自选神兽</button>
+            <button id="importBtn">导入到当前班级</button>
+            <button id="randomAssignBtn">随机分配神兽</button>
+            <button id="selfAssignBtn">学生自选神兽</button>
           </div>
         </div>
+
+        <h3>批量导入班级+学生档案</h3>
+        <textarea
+          id="classImportInput"
+          placeholder="格式：班级名:学生1,学生2,学生3\n例如：\n一年级1班:王小明,李小萌\n一年级2班:陈天天,赵星河"
+        ></textarea>
+        <div class="row">
+          <button id="importClassesBtn">批量导入班级档案</button>
+        </div>
+
+        <div class="stats" id="classStats"></div>
         <div id="studentList" class="student-list"></div>
       </section>
 
-      <section class="panel">
+      <section id="feedPage" class="page panel">
         <h2>可视化喂养激励</h2>
         <div class="row feed-tools">
           <input id="foodAmount" type="number" min="1" value="10" />
@@ -49,17 +74,16 @@
           <button id="feedSelectedBtn">喂养选中学生</button>
           <button id="feedAllBtn">全班批量喂养</button>
         </div>
-        <div class="stats" id="classStats"></div>
         <div id="petGrid" class="pet-grid"></div>
       </section>
 
-      <section class="panel">
-        <h2>积分排名表（当前班级）</h2>
-        <div class="ranking-tip">按积分→等级→食物排序，自动展示班级实时 Top。</div>
+      <section id="rankingPage" class="page panel">
+        <h2>积分排名（当前班级）</h2>
+        <div class="ranking-tip">按积分→等级→食物排序，实时展示班级表现。</div>
         <div id="rankingList" class="ranking-list"></div>
       </section>
 
-      <section class="panel settings-panel">
+      <section id="settingsPage" class="page panel settings-panel">
         <h2>系统设置</h2>
         <div class="settings-grid">
           <label>
