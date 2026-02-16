@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>班级宠物园</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1 id="systemTitle">班级宠物园</h1>
+        <p class="subtitle">把班级管理变成治愈养成游戏 ✨</p>
+      </div>
+      <div class="class-switcher">
+        <label for="classSelect">当前班级</label>
+        <select id="classSelect"></select>
+        <button id="addClassBtn">+ 新建班级</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>学生与神兽管理</h2>
+        <div class="row">
+          <textarea
+            id="studentInput"
+            placeholder="批量导入：每行一个名字\n例如：\n王小明\n李小萌\n陈天天"
+          ></textarea>
+          <div class="column gap-sm">
+            <button id="importBtn">批量导入名单</button>
+            <button id="randomAssignBtn">一键随机分配神兽</button>
+            <button id="selfAssignBtn">按学生自选神兽</button>
+          </div>
+        </div>
+        <div id="studentList" class="student-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>可视化喂养激励</h2>
+        <div class="row feed-tools">
+          <input id="foodAmount" type="number" min="1" value="10" />
+          <select id="reasonSelect">
+            <option value="作业优秀">作业优秀</option>
+            <option value="课堂纪律棒">课堂纪律棒</option>
+            <option value="小组协作好">小组协作好</option>
+            <option value="主动帮助同学">主动帮助同学</option>
+          </select>
+          <button id="feedSelectedBtn">喂养选中学生</button>
+          <button id="feedAllBtn">全班批量喂养</button>
+        </div>
+        <div class="stats" id="classStats"></div>
+        <div id="petGrid" class="pet-grid"></div>
+      </section>
+
+      <section class="panel">
+        <h2>神奇小卖部兑换</h2>
+        <div class="row">
+          <input id="rewardName" placeholder="奖品名称（如：免写作业卡）" />
+          <input id="rewardCost" type="number" min="1" placeholder="所需徽章" />
+          <input id="rewardStock" type="number" min="1" placeholder="库存" />
+          <button id="addRewardBtn">添加奖品</button>
+        </div>
+        <div id="shopList" class="shop-list"></div>
+      </section>
+
+      <section class="panel settings-panel">
+        <h2>系统设置</h2>
+        <div class="settings-grid">
+          <label>
+            系统名称
+            <input id="nameInput" />
+          </label>
+          <label>
+            主题色
+            <input id="themeInput" type="color" value="#6d8bff" />
+          </label>
+          <label>
+            喂养难度（每级所需食物）
+            <input id="difficultyInput" type="number" min="20" value="100" />
+          </label>
+        </div>
+        <button id="saveSettingsBtn">保存设置</button>
+      </section>
+    </main>
+
+    <div id="barrage" class="barrage" aria-live="polite"></div>
+
+    <template id="studentCardTemplate">
+      <article class="student-card">
+        <label class="check-wrap"><input type="checkbox" class="student-check" />选择</label>
+        <div class="pet-face"></div>
+        <div class="info">
+          <h3 class="student-name"></h3>
+          <p class="pet-name"></p>
+          <p class="level"></p>
+          <p class="badges"></p>
+          <div class="progress"><span></span></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
