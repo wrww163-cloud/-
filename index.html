@@ -21,7 +21,7 @@
 
     <main class="layout">
       <section class="panel">
-        <h2>学生与神兽管理</h2>
+        <h2>按班级管理学生与神兽</h2>
         <div class="row">
           <textarea
             id="studentInput"
@@ -54,14 +54,9 @@
       </section>
 
       <section class="panel">
-        <h2>神奇小卖部兑换</h2>
-        <div class="row">
-          <input id="rewardName" placeholder="奖品名称（如：免写作业卡）" />
-          <input id="rewardCost" type="number" min="1" placeholder="所需徽章" />
-          <input id="rewardStock" type="number" min="1" placeholder="库存" />
-          <button id="addRewardBtn">添加奖品</button>
-        </div>
-        <div id="shopList" class="shop-list"></div>
+        <h2>积分排名表（当前班级）</h2>
+        <div class="ranking-tip">按积分→等级→食物排序，自动展示班级实时 Top。</div>
+        <div id="rankingList" class="ranking-list"></div>
       </section>
 
       <section class="panel settings-panel">

@@ -104,7 +104,7 @@ button:hover {
 
 .student-list,
 .pet-grid,
-.shop-list {
+.ranking-list {
   margin-top: 0.8rem;
   display: grid;
   gap: 0.7rem;
@@ -154,14 +154,47 @@ button:hover {
   color: var(--muted);
 }
 
-.shop-item {
-  display: flex;
-  justify-content: space-between;
+.ranking-tip {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.ranking-item {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: 0.7rem;
   align-items: center;
   border: 1px solid #dde4ff;
   border-radius: 10px;
   background: #fbfcff;
   padding: 0.6rem;
+}
+
+.rank-num {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #edf1ff;
+  font-weight: 700;
+}
+
+.rank-num.top3 {
+  background: linear-gradient(135deg, #ffd66b, #ffb43b);
+  color: #533400;
+}
+
+.rank-main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rank-points {
+  font-weight: 700;
+  color: var(--theme-dark);
 }
 
 .settings-grid {
@@ -223,6 +256,10 @@ button:hover {
   }
 
   .student-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ranking-item {
     grid-template-columns: 1fr;
   }
 }
